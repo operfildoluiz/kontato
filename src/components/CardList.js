@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import configApp from "./../config/app";
 
 export default class CardList extends Component {
   render() {
@@ -20,13 +22,21 @@ export default class CardList extends Component {
                     </div>
                     <div class="media-content">
                       <p class="title is-4">{contact.name}</p>
-                      <p class="subtitle is-6">{contact.alias}</p>
+                      <p class="subtitle is-6">
+                        <i>{contact.alias}</i>
+                      </p>
                     </div>
                   </div>
                   <div class="content">
                     <a href="#phone">{contact.phone}</a> •{" "}
                     <a href="#mail">{contact.email}</a>
                   </div>
+                  <NavLink
+                    to={`${configApp.base}profile/${contact.id}`}
+                    className="button is-primary is-small"
+                  >
+                    Ver contato
+                  </NavLink>
                 </div>
               </div>
             </div>

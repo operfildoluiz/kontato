@@ -1,7 +1,7 @@
 import React from "react";
 
 const Hero = props => (
-  <div className="hero is-primary">
+  <div className={"hero " + (props.color || "is-primary")}>
     <div className="hero-body">
       <div className="container">
         <h1 className="title">{props.title}</h1>

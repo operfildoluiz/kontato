@@ -5,8 +5,18 @@ const ContactServer = (() => {
     return server.get("/");
   }
 
+  function create(contact) {
+    return server.post("/", contact);
+  }
+
+  function read(id) {
+    return server.get(`/${id}`);
+  }
+
   return {
-    getAll
+    getAll,
+    create,
+    read
   };
 })();
 
