@@ -17,11 +17,16 @@ const ContactServer = (() => {
     return server.delete(`/${id}`);
   }
 
+  function update(id, contact) {
+    return server.put(`/${id}`, contact);
+  }
+
   return {
     getAll,
     create,
     read,
-    remove
+    remove,
+    update
   };
 })();
 

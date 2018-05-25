@@ -3,6 +3,8 @@ import Header from "./../../components/Header";
 import Hero from "./../../components/Hero";
 
 import ContactService from "../../services/ContactService";
+import { NavLink } from "react-router-dom";
+import configApp from "./../../config/app";
 
 class Profile extends Component {
   state = {
@@ -47,7 +49,12 @@ class Profile extends Component {
                 <br />Email: {this.state.user.email}
               </div>
               <div className="column has-text-right">
-                <button className="button is-success">Editar</button>{" "}
+                <NavLink
+                  to={`${configApp.base}edit/${this.props.match.params.id}`}
+                  className="button is-success"
+                >
+                  Editar contato
+                </NavLink>{" "}
                 <button
                   className="button is-danger"
                   onClick={e => this.handleRemove(e)}
