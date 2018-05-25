@@ -21,6 +21,14 @@ class Profile extends Component {
     });
   };
 
+  handleRemove(ev) {
+    ev.preventDefault();
+
+    ContactService.remove(this.props.match.params.id).then(res => {
+      this.props.history.push("/");
+    });
+  }
+
   render() {
     return (
       <div>
@@ -33,8 +41,21 @@ class Profile extends Component {
 
         <section className="section">
           <div className="container">
-            Telefone: {this.state.user.phone}
-            <br />Email: {this.state.user.email}
+            <div class="columns">
+              <div className="column">
+                Telefone: {this.state.user.phone}
+                <br />Email: {this.state.user.email}
+              </div>
+              <div className="column has-text-right">
+                <button className="button is-success">Editar</button>{" "}
+                <button
+                  className="button is-danger"
+                  onClick={e => this.handleRemove(e)}
+                >
+                  Remover
+                </button>
+              </div>
+            </div>
           </div>
         </section>
       </div>

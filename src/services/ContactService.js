@@ -13,10 +13,15 @@ const ContactServer = (() => {
     return server.get(`/${id}`);
   }
 
+  function remove(id) {
+    return server.delete(`/${id}`);
+  }
+
   return {
     getAll,
     create,
-    read
+    read,
+    remove
   };
 })();
 
