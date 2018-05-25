@@ -6,16 +6,25 @@ import CardList from "./../../components/CardList";
 import ContactService from "../../services/ContactService";
 import Contact from "../../models/Contact";
 
+// Redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as loadingActions from "../../store/actions/loading";
+
 class Dashboard extends Component {
   state = {
     contacts: []
   };
 
   componentDidMount = () => {
+    this.props.toggleLoading(true);
+
     ContactService.getAll().then(res => {
       this.setState({
         contacts: res.data.map(item => new Contact(item))
       });
+
+      this.props.toggleLoading(false);
     });
   };
 
@@ -43,4 +52,9 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+// Redux State Binds
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(loadingActions, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(Dashboard);

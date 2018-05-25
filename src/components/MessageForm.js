@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import DateUtils from "./../models/DateUtils";
-// import { NavLink } from "react-router-dom";
-// import configApp from "./../config/app";
 
 export default class MessageForm extends Component {
   state = {

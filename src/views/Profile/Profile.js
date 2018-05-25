@@ -8,6 +8,11 @@ import MessageService from "../../services/MessageService";
 import { NavLink } from "react-router-dom";
 import configApp from "./../../config/app";
 
+// Redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as loadingActions from "../../store/actions/loading";
+
 class Profile extends Component {
   state = {
     user: { messages: [] },
@@ -18,6 +23,7 @@ class Profile extends Component {
   };
 
   componentDidMount = () => {
+    this.props.toggleLoading(true);
     ContactService.read(this.props.match.params.id).then(res => {
       this.setState({
         user: res.data,
@@ -38,6 +44,8 @@ class Profile extends Component {
         }
       });
     });
+
+    this.props.toggleLoading(false);
   }
 
   handleRemove(ev) {
@@ -170,4 +178,9 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+// Redux State Binds
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(loadingActions, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(Profile);
