@@ -52,7 +52,7 @@ class Profile extends Component {
     ev.preventDefault();
 
     ContactService.remove(this.props.match.params.id).then(res => {
-      this.props.history.push("/");
+      this.props.history.push(configApp.base);
     });
   }
 
