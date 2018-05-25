@@ -8,7 +8,7 @@ import { routes } from "./config/routing";
 const App = () => (
   <Provider store={store}>
     <Router>
-      <div>
+      <div style={{ paddingBottom: 20 }}>
         {routes.map((route, index) => (
           <Route
             key={index}

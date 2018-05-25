@@ -6,28 +6,28 @@ export default class CardList extends Component {
   render() {
     return (
       <div className="container">
-        <div class="columns">
+        <div className="columns">
           {this.props.list.map((contact, i) => (
-            <div class="column">
-              <div class="card">
-                <div class="card-content">
-                  <div class="media">
-                    <div class="media-left">
-                      <figure class="image is-48x48">
+            <div className="column" key={i}>
+              <div className="card">
+                <div className="card-content">
+                  <div className="media">
+                    <div className="media-left">
+                      <figure className="image is-48x48">
                         <img
                           src="https://bulma.io/images/placeholders/96x96.png"
                           alt="Profile"
                         />
                       </figure>
                     </div>
-                    <div class="media-content">
-                      <p class="title is-4">{contact.name}</p>
-                      <p class="subtitle is-6">
+                    <div className="media-content">
+                      <p className="title is-4">{contact.name}</p>
+                      <p className="subtitle is-6">
                         <i>{contact.alias}</i>
                       </p>
                     </div>
                   </div>
-                  <div class="content">
+                  <div className="content">
                     <a href="#phone">{contact.phone}</a> •{" "}
                     <a href="#mail">{contact.email}</a>
                   </div>
